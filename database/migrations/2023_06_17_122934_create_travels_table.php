@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('name');
             $table->longText('description');
             $table->integer('number_of_days');
-            $table->integer('number_of_nights');
+            $table->integer('number_of_nights')->nullable();
             $table->timestamps();
         });
     }

@@ -25,7 +25,6 @@ class Travel extends Model
     {
         return Attribute::make(
             get: fn($value,$attributes) => $attributes['number_of_days'] -1,
-//            set: fn($value) => $value,
         );
     }
 }
