@@ -15,8 +15,8 @@ class TourFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'stating_date' => Carbon::now()->addDays(random_int(1,6)),
-            'ending_date' => Carbon::now()->addDays(random_int(7,12)),
+            'starting_date' => Carbon::now()->addDays(random_int(1,6))->toDateTimeString(),
+            'ending_date' => Carbon::now()->addDays(random_int(7,12))->toDateTimeString(),
             'price' => $this->faker->randomFloat(2,1,200),
             'travel_id' => Travel::factory(),
         ];

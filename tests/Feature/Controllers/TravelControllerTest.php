@@ -8,7 +8,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\Feature\BaseTest;
 use Tests\TestCase;
 
-class TravelControllerTest extends TestCase
+class TravelControllerTest extends BaseTest
 {
     use RefreshDatabase;
 

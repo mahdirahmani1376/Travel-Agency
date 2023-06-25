@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->uuid('id');
             $table->foreignUuid('travel_id');
             $table->string('name');
-            $table->dateTime('stating_date');
+            $table->dateTime('starting_date');
             $table->dateTime('ending_date');
             $table->decimal('price');
             $table->timestamps();

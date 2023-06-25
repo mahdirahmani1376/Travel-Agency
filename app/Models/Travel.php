@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\UUID;
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Travel extends Model
 {
     use HasFactory;
-    use UUID;
+    use Uuid;
 
-    protected $guarded = ['name','description','is_public','number_of_days','number_of_nights','slug'];
+    protected $fillable = ['name','description','is_public','number_of_days','number_of_nights','slug'];
     protected $table = 'travels';
 
     public function tours(): HasMany

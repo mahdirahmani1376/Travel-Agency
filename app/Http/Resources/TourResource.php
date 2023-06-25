@@ -17,7 +17,7 @@ class TourResource extends JsonResource
         return [
             'travel_id' => $this->travel_id,
             'name' => $this->name,
-            'stating_date' => $this->stating_date,
+            'starting_date' => $this->starting_date,
             'ending_date' => $this->ending_date,
             'price' => $this->price,
             'travel' => TravelResource::make($this->whenLoaded('tour'))

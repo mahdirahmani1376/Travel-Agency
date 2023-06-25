@@ -6,9 +6,10 @@ use App\Models\Tour;
 use App\Models\Travel;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\BaseTest;
 use Tests\TestCase;
 
-class TourControllerTest extends TestCase
+class TourControllerTest extends BaseTest
 {
     use RefreshDatabase;
     /** @test */
@@ -33,19 +34,19 @@ class TourControllerTest extends TestCase
         ]);
         Tour::factory()->for($travel,'travel')->create([
             'price' => 1000,
-            'stating_date' => $now,
+            'starting_date' => $now,
             'ending_date' => $now->addDays(1),
         ]);
 
         Tour::factory()->for($travel,'travel')->create([
             'price' => 1500,
-            'stating_date' => $now->addDays(2),
+            'starting_date' => $now->addDays(2),
             'ending_date' => $now->addDays(4)
         ]);
 
         Tour::factory()->for($travel,'travel')->create([
             'price' => 3000,
-            'stating_date' => $now->addDays(8),
+            'starting_date' => $now->addDays(8),
             'ending_date' => $now->addDays(10),
         ]);
         Tour::factory()->for($travel,'travel')->create([
@@ -66,5 +67,21 @@ class TourControllerTest extends TestCase
 
         $response = $this->getJson(route('travels-tours.index', $param));
         $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function can_user_create_tour()
+    {
+        $travel = Travel::factory()->create();
+        $tour = Tour::factory()->for($travel,'travel')->make();
+
+        $response = $this->postJson(route('travels-tours.store',$travel),$tour->toArray());
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('tours',[
+           'name' => $tour->name,
+           'travel_id' => $travel->id,
+        ]);
+
     }
 }

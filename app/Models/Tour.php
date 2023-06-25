@@ -16,7 +16,7 @@ class Tour extends Model
     use HasFactory;
     use UUID;
 
-    protected $fillable = ['name', 'price', 'stating_date', 'ending_date', 'travel_id'];
+    protected $fillable = ['name', 'price', 'starting_date', 'ending_date', 'travel_id'];
     protected $table = 'tours';
 
     public function travel(): BelongsTo
@@ -42,7 +42,7 @@ class Tour extends Model
                     $q->where('price','<', $request->priceTo * 100);
                 })
             ->when($request->dateFrom,function (Builder $q,$request) {
-                $q->where('stating_date','>=',$request->dateFrom);
+                $q->where('starting_date','>=',$request->dateFrom);
                 })
             ->when($request->dateTo,function (Builder $q,$request) {
                 $q->where('ending_date','<=',$request->dateTo);
@@ -52,7 +52,7 @@ class Tour extends Model
                     $q->orderBy($request->sortBy,$request->sortOrder);
                 },
                 function (Builder $q) {
-                    $q->orderBy('stating_date','desc');
+                    $q->orderBy('starting_date','desc');
                 });
     }
 }
