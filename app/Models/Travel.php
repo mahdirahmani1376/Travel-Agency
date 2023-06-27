@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Travel extends Model
 {
@@ -15,6 +16,16 @@ class Travel extends Model
 
     protected $fillable = ['name','description','is_public','number_of_days','number_of_nights','slug'];
     protected $table = 'travels';
+
+    protected static function booted()
+    {
+        static::creating(function (Travel $travel){
+            $travel->slug = Str::slug($travel->name);
+        });
+        static::updating(function (Travel $travel){
+            $travel->slug = Str::slug($travel->name);
+        });
+    }
 
     public function tours(): HasMany
     {

@@ -21,4 +21,36 @@ class TravelControllerTest extends BaseTest
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function can_user_create_travel()
+    {
+        $travel = Travel::factory()->make();
+
+        $response = $this->postJson(route('travels.store'),$travel->toArray());
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('travels',[
+           'name' => $travel->name
+        ]);
+
+    }
+
+    /** @test */
+    public function can_user_update_travel()
+    {
+        $travel = Travel::factory()->create();
+
+        $data = Travel::factory()->make();
+
+        $response = $this->putJson(route('travels.update',$travel),$data->only(['name','description','is_public','number_of_days']));
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('travels',[
+            'name' => $data->name,
+            'description' => $data->description,
+        ]);
+
+    }
 }

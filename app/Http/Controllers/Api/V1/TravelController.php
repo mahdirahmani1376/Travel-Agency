@@ -9,6 +9,7 @@ use App\Models\Travel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 class TravelController extends Controller
 {
@@ -29,6 +30,18 @@ class TravelController extends Controller
         return Response::json(
             data: TravelResource::make(
                 $travel
+            )
+        );
+    }
+
+    public function update(Travel $travel,TravelRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $travel->update($data);
+
+        return Response::json(
+          data: TravelResource::make(
+              $travel
             )
         );
     }

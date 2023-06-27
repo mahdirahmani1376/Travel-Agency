@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(TravelController::class)->prefix('travels')->group(function () {
     Route::get('/', 'index')->name('travels.index');
     Route::post('/', 'store')->name('travels.store')->middleware(['auth:sanctum', "role:" . RoleEnum::ADMIN->value. "|" . RoleEnum::SUPER_ADMIN->value]);
+    Route::put('/{travel}/update','update')->name('travels.update')->middleware(['auth:sanctum', "role:" . RoleEnum::EDITOR->value."|".RoleEnum::SUPER_ADMIN->value]);
 });
 
 Route::controller(TourController::class)->group(function () {

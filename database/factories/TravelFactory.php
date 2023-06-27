@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Travel;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TravelFactory extends Factory
 {
@@ -15,7 +16,6 @@ class TravelFactory extends Factory
         $numberOfNights = $numberOfDays - 1;
         return [
             'is_public' => true,
-            'slug' => $this->faker->slug(),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'number_of_days' => $numberOfDays,
