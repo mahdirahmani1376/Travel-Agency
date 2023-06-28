@@ -6,9 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
+use OpenApi\Annotations as OA;
 
 class LoginController extends Controller
 {
+    /**
+     * @OA\Post(
+     *      path="/v1/login",operationId="LoginUser",tags={"Users"},description="login the user",
+     *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/LoginData"),),
+     *      @OA\Response(response=200,description="Successful operation",),
+     *      @OA\Response(response=401,description="Unauthenticated",),
+     *      @OA\Response(response=403,description="unauthorized"),
+     * ),
+     */
     public function login(LoginRequest $request)
     {
         $data = $request->validated();

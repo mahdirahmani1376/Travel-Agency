@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Http\Requests\TourIndexDataRequest;
-use App\Traits\UUID;
+use App\Traits\Uuid;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Tour extends Model
 {
     use HasFactory;
-    use UUID;
+    use Uuid;
 
     protected $fillable = ['name', 'price', 'starting_date', 'ending_date', 'travel_id'];
     protected $table = 'tours';
