@@ -14,7 +14,7 @@ class LoginController extends Controller
      * @OA\Post(
      *      path="/api/login",operationId="LoginUser",tags={"Users"},description="login the user",
      *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/LoginData"),),
-     *      @OA\Response(response=200,description="Successful operation",),
+     *      @OA\Response(response=200,description="Successful operation",@OA\JsonContent()),
      *      @OA\Response(response=401,description="Unauthenticated",),
      *      @OA\Response(response=403,description="unauthorized"),
      * ),

@@ -23,7 +23,7 @@ class LoginData
      *
      * @var string
      */
-    public string $name;
+    public string $email;
 
     /**
      * @OA\Property(

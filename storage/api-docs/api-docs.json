@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://my-default-host.com",
+            "url": "http://127.0.0.1:8000",
             "description": "Demo API Server"
         }
     ],
@@ -38,7 +38,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -94,7 +99,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/{travel}/tours": {
@@ -128,7 +138,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -139,7 +154,7 @@
                 },
                 "security": [
                     {
-                        "bearerManager": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -200,7 +215,12 @@
                         "description": "Successful operation"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "403": {
                         "description": "unauthorized"
@@ -208,7 +228,7 @@
                 },
                 "security": [
                     {
-                        "bearerManager": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -244,7 +264,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -255,7 +280,7 @@
                 },
                 "security": [
                     {
-                        "bearerManager": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -271,7 +296,7 @@
                     "password"
                 ],
                 "properties": {
-                    "name": {
+                    "email": {
                         "title": "email",
                         "description": "email of the user",
                         "type": "string",

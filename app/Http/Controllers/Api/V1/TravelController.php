@@ -38,9 +38,9 @@ class TravelController extends Controller
      *      path="/api/travels",operationId="storeTravel",tags={"TravelParts"},description="store new travel request",
      *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/TravelData")),
      *      @OA\Response(response=200,description="Successful operation",),
-     *      @OA\Response(response=401,description="Unauthenticated",),
+     *      @OA\Response(response=401,description="Unauthenticated",@OA\JsonContent()),
      *      @OA\Response(response=403,description="unauthorized"),
-     *      security={ {"bearerManager": {} }},
+     *      security={ {"sanctum": {} }},
      * ),
      */
     public function store(TravelRequest $request): JsonResponse
@@ -60,10 +60,10 @@ class TravelController extends Controller
      *      path="/api/travels/{travel}/update",operationId="updateTravel",tags={"TravelParts"},description="update delivery part",
      *      @OA\Parameter(name="travel",description="travel_id of the Travel",required=true, in="path",@OA\Schema(type="integer",example=1)),
      *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/TravelData"),),
-     *      @OA\Response(response=200,description="Successful operation"),
+     *      @OA\Response(response=200,description="Successful operation",@OA\JsonContent()),
      *      @OA\Response(response=401, description="Unauthenticated"),
      *      @OA\Response(response=403, description="unauthorized"),
-     *      security={ {"bearerManager": {} }},
+     *      security={ {"sanctum": {} }},
      * )
      */
     public function update(Travel $travel, TravelRequest $request): JsonResponse

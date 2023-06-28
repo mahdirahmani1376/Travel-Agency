@@ -23,7 +23,8 @@ class TourController extends Controller
      *      @OA\Parameter(name="travel",description="slug of the Travel",required=true, in="path",@OA\Schema(type="string",example="test")),
      *      @OA\Response(response=200,description="Successful operation",@OA\JsonContent()),
      *      @OA\Response(response=401,description="Unauthenticated",@OA\JsonContent()),
-     *      @OA\Response(response=403,description="Forbidden",@OA\JsonContent())
+     *      @OA\Response(response=403,description="Forbidden",@OA\JsonContent()),
+     *      security={ {"sanctum": {} }},
      * )
      */
     public function index(Travel $travel, TourIndexDataRequest $request): JsonResponse
@@ -40,10 +41,10 @@ class TourController extends Controller
      *      path="/api/{travel}/tours",operationId="storePartDelivery",tags={"Tours"},description="store new Tour",
      *      @OA\Parameter(name="travel",description="travel_id of the Travel",required=true, in="path",@OA\Schema(type="integer",example="1")),
      *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/TourData"),),
-     *      @OA\Response(response=200,description="Successful operation",),
+     *      @OA\Response(response=200,description="Successful operation",@OA\JsonContent()),
      *      @OA\Response(response=401,description="Unauthenticated",),
      *      @OA\Response(response=403,description="unauthorized"),
-     *      security={ {"bearerManager": {} }},
+     *      security={ {"sanctum": {} }},
      * ),
      */
     public function store(Travel $travel, TourRequest $request)
