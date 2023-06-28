@@ -15,7 +15,7 @@ class TourController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/travels/{travel}/tours",
+     *      path="/api/travels/{travel}/tours",
      *      operationId="getTravelToursList",
      *      tags={"Tours"},
      *      summary="Get list of tours",
@@ -37,7 +37,7 @@ class TourController extends Controller
 
     /**
      * @OA\Post(
-     *      path="{travel}/tours",operationId="storePartDelivery",tags={"Tours"},description="store new Tour",
+     *      path="/api/{travel}/tours",operationId="storePartDelivery",tags={"Tours"},description="store new Tour",
      *      @OA\Parameter(name="travel",description="travel_id of the Travel",required=true, in="path",@OA\Schema(type="integer",example="1")),
      *      @OA\RequestBody(required=true,@OA\JsonContent(ref="#/components/schemas/TourData"),),
      *      @OA\Response(response=200,description="Successful operation",),

@@ -19,7 +19,7 @@
         }
     ],
     "paths": {
-        "/v1/login": {
+        "/api/login": {
             "post": {
                 "tags": [
                     "Users"
@@ -49,7 +49,7 @@
                 }
             }
         },
-        "/travels/{travel}/tours": {
+        "/api/travels/{travel}/tours": {
             "get": {
                 "tags": [
                     "Tours"
@@ -97,7 +97,7 @@
                 }
             }
         },
-        "{travel}/tours": {
+        "/api/{travel}/tours": {
             "post": {
                 "tags": [
                     "Tours"
@@ -144,7 +144,7 @@
                 ]
             }
         },
-        "/travels": {
+        "/api/travels": {
             "get": {
                 "tags": [
                     "Travels"
@@ -213,7 +213,7 @@
                 ]
             }
         },
-        "/travels/{travel}/update": {
+        "/api/travels/{travel}/update": {
             "put": {
                 "tags": [
                     "TravelParts"
